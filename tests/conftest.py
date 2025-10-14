@@ -9,11 +9,9 @@ from playwright_config import config
 load_dotenv()
 
 
-@pytest.fixture(scope="session")
-def env_type():
-    """Returns the current environment type (local or CI)."""
-    return os.getenv("ENV_TYPE", config["env_type"])
-
+def pytest_configure(config):
+    allure_dir = os.path.join(os.path.dirname(__file__), "..", "allure-results")
+    config.option.allure_report_dir = os.path.abspath(allure_dir)
 
 @pytest.fixture(scope="session", params=config["browsers"])
 def browser(request):
@@ -24,7 +22,6 @@ def browser(request):
         browser = browser_type.launch(headless=config["headless"])
         yield browser
         browser.close()
-
 
 @pytest.fixture()
 def page(browser):
