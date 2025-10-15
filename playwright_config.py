@@ -7,9 +7,6 @@ load_dotenv()
 
 ENV_TYPE = os.getenv("ENV_TYPE", "local")
 
-# Default base URL (can be overridden via environment variables)
-BASE_URL = os.getenv("BASE_URL", "https://www.trgint.com/")
-
 # Headless mode: always True in CI, configurable locally
 HEADLESS = True if ENV_TYPE == "CI" else False
 
@@ -23,13 +20,16 @@ BROWSERS = ["chromium", "firefox", "webkit"]
 TESTS_DIR = "tests"
 REPORTS_DIR = "test-results"
 
-# You can reference these variables in your pytest fixtures or test logic
 config = {
     "env_type": ENV_TYPE,
-    "base_url": BASE_URL,
     "headless": HEADLESS,
     "browsers": BROWSERS,
     "timeout": DEFAULT_TIMEOUT,
     "tests_dir": TESTS_DIR,
     "reports_dir": REPORTS_DIR,
+    "base_url": os.getenv("BASE_URL", "https://www.trgint.com/"),
+    "careers_url": os.getenv("CAREERS_URL", "https://www.careers.trgint.com/"),
+    "life_at_trg_url": os.getenv(
+        "LIFE_AT_TRG_URL", "https://www.careers.trgint.com/life-at-trg"
+    ),
 }
