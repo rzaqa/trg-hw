@@ -1,0 +1,18 @@
+pytest
+pytest-playwright
+playwright
+requests
+
+# Code quality & formatting
+pre-commit
+black
+isort
+flake8
+flake8-bugbear
+
+# Work with env variables
+python-dotenv
+
+#Test report
+allure-pytest
+allure-python-commons
