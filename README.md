@@ -1,3 +1,5 @@
+[![Playwright Tests](https://github.com/rzaqa/trg-hw/actions/workflows/tests.yml/badge.svg)](https://github.com/rzaqa/trg-hw/actions/workflows/tests.yml)
+
 🧰 Playwright Test Setup & Execution Guide
 
 🧩 1. Create and activate virtual environment
