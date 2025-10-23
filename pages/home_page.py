@@ -22,12 +22,6 @@ class HomePage(BasePage):
     def go_to_career_page(self):
         self.menu_who_we_are.hover()
         expect(self.careers_link).to_be_visible(timeout=5000)
-
-        with self.page.expect_popup() as popup_info:
-            self.careers_link.click(
-                force=True
-            )  # ensure click works even if slightly offset
-
-        new_page = popup_info.value
-        new_page.wait_for_load_state()
-        return CareerPage(new_page)
+        self.careers_link.click(force=True)
+        self.page.wait_for_load_state()
+        return CareerPage(self.page)
